@@ -1,3 +1,13 @@
+#!/bin/sh
+
+function init() {
+arr=("Scenes" "Prefabs" "Scripts" "Animations" "Materials" "Physics Materials" "Fonts" "Textures" "Audio" "Resources" "Editor" "Plugins")
+for var in "${arr[@]}"; do
+  #echo $var
+  mkdir Assets/"$var"
+done
+
+cat << EOT > .gitignore
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -28,3 +38,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+EOT
+}
+
+if [ -e Assets ]; then
+  echo "Run"
+  init
+fi
